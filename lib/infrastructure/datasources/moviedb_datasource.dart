@@ -11,7 +11,7 @@ class MoviedbDataSource extends MoviesDatasource {
   final dio = Dio(BaseOptions(
     baseUrl: 'https://api.themoviedb.org/3',
     queryParameters: {
-      'api-key': Environment.theMovieDbKey,
+      'api_key': Environment.theMovieDbKey,
       'language': 'es-ES',
     }
   ));
@@ -19,7 +19,7 @@ class MoviedbDataSource extends MoviesDatasource {
   @override
   Future<List<Movie>> getNowPlaying({int page = 1}) async {
 
-    final response = await dio.get('/movie/noe_playing');
+    final response = await dio.get('/movie/now_playing');
     final movieDBResponse = MovieDbResponse.fromJson(response.data);
     
     final List<Movie> movies = movieDBResponse.results
